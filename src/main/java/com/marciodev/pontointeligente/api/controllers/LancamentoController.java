@@ -161,6 +161,7 @@ public class LancamentoController {
 	 * @throws ParseException 
 	 */
 	@PutMapping(value = "/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<LancamentoDto>> atualizar(@PathVariable("id") Long id,
 			@Valid @RequestBody LancamentoDto lancamentoDto, BindingResult result) throws ParseException {
 		log.info("Atualizando lançamento: {}", lancamentoDto.toString());
